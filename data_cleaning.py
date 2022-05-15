@@ -31,6 +31,9 @@ def clean_data(dataframe, speeding_column_name="speeding_status", lowercase_colu
     # Trim the category names for our target class (Removes an unecessary suffix).
     dataframe['MAXSEV_IMNAME'] = dataframe['MAXSEV_IMNAME'].str[:-4]
 
+    # Remove "Area" from urban indicator value
+    dataframe["URBANICITYNAME"] = dataframe.loc[:,"URBANICITYNAME"].apply(lambda string: string.split()[0])
+
     # Lowercase column names
     if lowercase_columns:
         # Lowercase column names
