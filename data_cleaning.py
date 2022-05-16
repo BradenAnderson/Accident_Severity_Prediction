@@ -206,7 +206,8 @@ def create_strip_plot(dataframe, categorical_feature, continuous_feature, shadin
 # Basic count plot for factors
 def plot_sorted_level_counts(dataframe, plotting_column, title, xlabel, ylabel, ylab_fontsize=12, title_fontsize=16,
                              xlab_fontsize=12, tick_fontsize=12, tick_rotation=45, ax=None, figsize=(10, 7), annot_fontsize=14, 
-                             round_digits=4, add_annotations=True, annot_vshift=0.04, palette="husl", seaborn_style="white"):
+                             round_digits=4, add_annotations=True, annot_vshift=0.04, palette="husl", seaborn_style="white", 
+                             title_weight='bold', xlab_weight='bold', ylab_weight='bold'):
 
     sns.set_style(seaborn_style)
     
@@ -220,9 +221,9 @@ def plot_sorted_level_counts(dataframe, plotting_column, title, xlabel, ylabel, 
     sns.countplot(data=dataframe, x=plotting_column, ax=ax, order=plot_order, palette=palette)
         
     # Annotate plot axes
-    ax.set_title(f"{title}", fontsize=title_fontsize, weight='bold')
-    ax.set_xlabel(xlabel, fontsize=xlab_fontsize, weight='bold')
-    ax.set_ylabel(ylabel, fontsize=ylab_fontsize, weight='bold')
+    ax.set_title(f"{title}", fontsize=title_fontsize, weight=title_weight)
+    ax.set_xlabel(xlabel, fontsize=xlab_fontsize, weight=xlab_weight)
+    ax.set_ylabel(ylabel, fontsize=ylab_fontsize, weight=ylab_weight)
     ax.tick_params(axis='both', labelsize=tick_fontsize, labelrotation=tick_rotation)
     
     if add_annotations:
