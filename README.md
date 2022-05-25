@@ -25,8 +25,6 @@
 
 `wkdy_imname` [day_week] - no change
 
-`hour_imname` [hour] - no change
-
 `reljct1` - keep as is, combine nr/unk/runk
 
 `lgtcon_imname` - keep as is, combine other/nr/unk/runk
@@ -38,8 +36,6 @@
 `age_im` - remove ages 15 and below, bin 80+
 
 `sex_imname` [sex] - combine nr/unk/runk
-
-`vspd_lim` - combine nr/unk/nrunk
 
 `trav_sp` - no change but possibly remove traveling speed below X mph?
 
