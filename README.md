@@ -53,6 +53,8 @@ nr = not reported /
 unk = unknown /
 runk = reported as unknown
 
+[Data dictionary](https://crashstats.nhtsa.dot.gov/Api/Public/ViewPublication/813236)
+
 ## Removed
 `hour_imname` [hour] - unnecessary with `hour_binned`
 
