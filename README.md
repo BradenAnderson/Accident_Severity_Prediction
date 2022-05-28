@@ -7,13 +7,13 @@
 
 `body_typname` - tavin's problem child
 
-`mod_yearname` - sklearn impute 
+`mod_yearname` - remove obs where year is below 1980 
 
 `vtrafwayname` [vtrafway] - 7 levels + combine nr/unk/runk
 
 `vnum_lanname` [vnum_lan] - 8 + combine nr/unk/runk
 
-`vsurcondname` [vsurcond] - hot encode?
+`vsurcondname` [vsurcond] - hot encode
 
 `vtrafconname` [vtrafcon] - hot encode or combine into 4 levels per pg 159?
 
@@ -21,7 +21,7 @@
 
 `int_hwyname` [int_hwy] - no change (3 levels)
 
-`weathername` - hien's problem child
+`weathername` - 2 ways + hot encode
 
 `wkdy_imname` [day_week] - no change
 
@@ -47,7 +47,7 @@
 
 `p_crash1` - keep levels as is but combine other/unknwn
 
-`ads_pres` - keep levels as but combine np/unk
+~~`ads_pres` - keep levels as but combine np/unk~~
 
 nr = not reported /
 unk = unknown /
