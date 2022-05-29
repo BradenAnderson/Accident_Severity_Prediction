@@ -20,8 +20,9 @@ def clean_data(dataframe, speeding_column_name="speeding_status", lowercase_colu
     dataframe["HOUR_BINNED"] = dataframe["HOUR_IM"].apply(lambda hour: create_binned_hours_feature(numeric_hour=hour))
     
     # Perform binning on the body type column
-    dataframe["BODY_TYPNAME"] = dataframe["BODY_TYPNAME"].apply(lambda body_type: create_binned_vehicle_body_type_feature(body_type=body_type))
-    
+    # dataframe["BODY_TYPNAME"] = dataframe["BODY_TYPNAME"].apply(lambda body_type: create_binned_vehicle_body_type_feature(body_type=body_type))
+    dataframe = bin_body_type(df=dataframe)
+
     # Add a feature for if someone was speeding (Yes, No, Unknown)
     dataframe[speeding_column_name] = dataframe.apply(lambda row: create_speeding_feature(row), axis='columns')
 
