@@ -132,6 +132,97 @@ def create_speeding_feature(row):
     else:
         return 'not speeding'
 
+    
+def bin_body_type(df):
+    
+    df['body_type_binned']=df['BODY_TYPNAME']
+
+    df['body_type_binned']=df['body_type_binned'].replace(to_replace=
+                                        ['4-door sedan, hardtop',
+                                       '2-door sedan,hardtop,coupe',
+                                       '3-door coupe','Sedan/Hardtop, number of doors unknown'
+                                        ],value=1)
+    df['body_type_binned']=df['body_type_binned'].replace(to_replace=
+                                        'Compact Utility (Utility Vehicle Categories \"Small" and \"Midsize\")',
+                                         value=2)
+    df['body_type_binned']=df['body_type_binned'].replace(to_replace=
+                                                                                                                                                                                  ["Auto-based pickup (includes E1 Camino, Caballero, Ranchero, SSR, G8-ST, Subaru Brat, Rabbit Pickup)",
+                                        "Light Pickup",
+                                        "Unknown (pickup style) light conventional truck type",
+                                        "Unknown light truck type",
+                                        "Unknown light vehicle type (automobile,utility vehicle, van, or light truck)"
+                                        ],value=3)
+    df['body_type_binned']=df['body_type_binned'].replace(to_replace=
+                                         ['Large utility (ANSI D16.1 Utility Vehicle Categories and "Full Size" and "Large")',
+                                        'Utility Vehicle, Unknown body type'
+                                         ],value=4)
+    df['body_type_binned']=df['body_type_binned'].replace(to_replace=
+                                        ['ATV/ATC [All-Terrain Cycle]',
+                                        'Moped or motorized bicycle',
+                                        'Motor Scooter',
+                                        'Off-road Motorcycle',
+                                        'Other motored cycle type (mini-bikes, pocket motorcycles "pocket bikes")',
+                                        'Three-wheel Motorcycle (2 Rear Wheels)',
+                                        'Two Wheel Motorcycle (excluding motor scooters)',
+                                        'Unenclosed Three Wheel Motorcycle / Unenclosed Autocycle (1 Rear Wheel)',
+                                        'Unknown motored cycle type',
+                                        'Unknown Three Wheel Motorcycle Type'
+                                        ],value=5)
+    df['body_type_binned']=df['body_type_binned'].replace(to_replace=
+                                        ['Station Wagon (excluding van and truck based)',
+                                        'Utility station wagon (includes suburban limousines, Suburban, Travellall, Grand Wagoneer)'
+                                        ],value=6)
+    df['body_type_binned']=df['body_type_binned'].replace(to_replace=
+                                        ['3-door/2-door hatchback',
+                                        '5-door/4-door hatchback',
+                                        'Hatchback, number of doors unknown'
+                                        ],value=7)
+    df['body_type_binned']=df['body_type_binned'].replace(to_replace=
+                                        ['Cross Country/Intercity Bus',
+                                        'Medium/Heavy Vehicle Based Motor Home',
+                                        'Other Bus Type',
+                                        'School Bus',
+                                        'Transit Bus (City Bus)',
+                                        'Unknown Bus Type'
+                                        ],value=8)
+    df['body_type_binned']=df['body_type_binned'].replace(to_replace=
+                                        ['Cab Chassis Based (includes Rescue Vehicle, Light Stake, Dump, and Tow Truck)',
+                                        'Medium/heavy Pickup (GVWR greater than 10,000 lbs.)',
+                                        'Single-unit straight truck or Cab-Chassis (GVWR greater than 26,000 lbs.)',
+                                        'Single-unit straight truck or Cab-Chassis (GVWR range 10,001 to 19,500 lbs.)',
+                                        'Single-unit straight truck or Cab-Chassis (GVWR range 19,501 to 26,000 lbs.)',
+                                        'Single-unit straight truck or Cab-Chassis (GVWR unknown)',
+                                        'Truck-tractor (Cab only, or with any number of trailing unit; any weight)',
+                                        'Unknown if single-unit or combination unit Heavy Truck (GVWR greater than 26,000 lbs.)',
+                                        'Unknown if single-unit or combination unit Medium Truck (GVWR range 10,001 lbs. to 26,000 lbs.)',
+                                        'Unknown medium/heavy truck type'
+                                         ],value=9)
+    df['body_type_binned']=df['body_type_binned'].replace(to_replace=
+                                        'Convertible(excludes sun-roof,t-bar)',
+                                           value=10)
+    df['body_type_binned']=df['body_type_binned'].replace(to_replace=
+                                        ['Large Van-Includes van-based buses (B150-B350, Sportsman, Royal Maxiwagon, Ram, Tradesman,...)',
+                                        'Minivan (Chrysler Town and Country, Caravan, Grand Caravan, Voyager, Voyager, Honda-Odyssey, ...)',
+                                        'Other van type (Hi-Cube Van, Kary)',
+                                        'Step van (GVWR greater than 10,000 lbs.)',
+                                        'Step-van or walk-in van (GVWR less than or equal to 10,000 lbs.)',
+                                        'Unknown van type',
+                                        'Van-Based Bus GVWR greater than 10,000 lbs.'
+                                        ],value=11)
+    df['body_type_binned']=df['body_type_binned'].replace(to_replace=
+                                        ['Construction equipment other than trucks (includes graders)',
+                                        'Farm equipment other than trucks',
+                                        'Golf Cart',
+                                        'Large Limousine-more than four side doors or stretched chassis',
+                                        'Low Speed Vehicle (LSV) / Neighborhood Electric Vehicle (NEV)',
+                                        'Not Reported',
+                                        'Other or Unknown automobile type',
+                                        'Other vehicle type (includes go-cart, fork-lift, city street sweeper dunes/swamp buggy)',
+                                        'Recreational Off-Highway Vehicle',
+                                        'Unknown body type',
+                                        'Unknown truck type (light/medium/heavy)',
+                                        ],value=12)
+    return df
 
 ############################### END DATA CLEANING FUNCTIONS ###############################
 
@@ -359,6 +450,8 @@ def _set_patch_colors(ax, text_to_color_map):
                 p.set_color(c=color)
     
     return 
+
+
 
 ############################### END PLOTTING FUNCTIONS ###############################
 
